@@ -1,0 +1,215 @@
+# TASK 1
+#Design a simple calculator with basic arithemetic operations
+#prompt the user to input two numbers and an noperation choice.
+
+# Function to add two numbers
+def add(x, y):
+    return x + y# Function to add two numbers
+def add(x, y):
+    return x + y
+
+# Function to subtract two numbers
+def subtract(x, y):
+    return x - y
+
+# Function to multiply two numbers
+def multiply(x, y):
+    return x * y
+
+# Function to divide two numbers
+def divide(x, y):
+    return x / y
+
+print("Welcome to Simple Calculator")
+
+while True:
+    print("Operations:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Exit")
+
+    choice = input("Enter choice (1/2/3/4/5): ")
+
+    # Check if choice is one of the four options
+    if choice in ('1', '2', '3', '4'):
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        if choice == '1':
+            print("Result:", add(num1, num2))
+
+        elif choice == '2':
+            print("Result:", subtract(num1, num2))
+
+        elif choice == '3':
+            print("Result:", multiply(num1, num2))
+
+        elif choice == '4':
+            if num2 == 0:
+                print("Error! Division by zero is not allowed.")
+            else:
+                print("Result:", divide(num1, num2))
+
+    elif choice == '5':
+        print("Thank you for using the calculator. Goodbye!")
+        break
+
+    else:
+        print("Invalid Input")
+
+# Function to subtract two numbers
+def subtract(x, y):
+    return x - y
+
+# Function to multiply two numbers
+def multiply(x, y):
+    return x * y
+
+# Function to divide two numbers
+def divide(x, y):
+    return x / y
+
+#Perform the calculatons and display the result
+print("Welcome to Simple Calculator")
+
+while True:
+    print("Operations:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Exit")
+
+    choice = input("Enter choice (1/2/3/4/5): ")
+
+    # Check if choice is one of the four options
+    if choice in ('1', '2', '3', '4'):
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        if choice == '1':
+            print("Result:", add(num1, num2))
+
+        elif choice == '2':
+            print("Result:", subtract(num1, num2))
+
+        elif choice == '3':
+            print("Result:", multiply(num1, num2))
+
+        elif choice == '4':
+            if num2 == 0:
+                print("Error! Division by zero is not allowed.")
+            else:
+                print("Result:", divide(num1, num2))
+
+    elif choice == '5':
+        print("Thank you for using the calculator. Goodbye!")
+        break
+
+    else:
+        print("Invalid Input")
+
+
+
+
+#TASK 4
+#HANGMAN Game using python
+import random
+# List of words for the game
+word_list = ["ball", "bat", "stumps", "wickets", "umpaire", "bowler", "batsman"]
+def choose_word():
+    return random.choice(word_list)
+
+def display_word(word, guessed_letters):
+    display = ""
+    for letter in word:
+        if letter in guessed_letters:
+            display += letter + " "
+        else:
+            display +=  "_ "
+    return display.strip()
+def hangman():
+    print("Welcome to Hangman!")
+    play = True
+
+    while play:
+        # Initialize game variables
+        attempts = 6
+        word_to_guess = choose_word()
+        guessed_letters = []
+
+        print("Try to guess the word!")
+
+        while attempts > 0:
+            print(display_word(word_to_guess, guessed_letters))
+
+            guess = input("Enter a letter: ").lower()
+
+            if len(guess) != 1 or not guess.isalpha():
+                print("Please enter a single letter.")
+                continue
+
+            if guess in guessed_letters:
+                print("You've already guessed that letter!")
+                continue
+
+            guessed_letters.append(guess)
+
+            if guess in word_to_guess:
+                print("Good guess!")
+            else:
+                print("Incorrect guess!")
+                attempts -= 1
+                if attempts == 0:
+                    break
+                print(f"Attempts left: {attempts}")
+
+            if display_word(word_to_guess, guessed_letters).replace(" ", "") == word_to_guess:
+                print(display_word(word_to_guess, guessed_letters))
+                print("Congratulations! You guessed the word!")
+                break
+
+        if attempts == 0:
+            print(f"Sorry, you ran out of attempts. The word was '{word_to_guess}'.")
+
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+        if play_again != "yes":
+            print("Thank you for playing Hangman. Goodbye!")
+            play = False
+
+if __name__ == "__main__":
+    hangman()
+
+
+# TASK 5
+#DICE ROLLING SIMULATOR using with python code
+
+import random
+def roll_dice(num_rolls, num_sides):
+    print(f"Rolling {num_rolls} dice with {num_sides} sides:")
+    for roll in range(1, num_rolls + 1):
+        result = random.randint(1, num_sides)
+        print(f"Roll {roll}: {result}")
+def main():
+    print("Welcome to Dice Roller Simulator!")
+    while True:
+        try:
+            num_sides = int(input("Enter the number of sides on the dice: "))
+            if num_sides <= 0:
+                print("Please enter a positive number of sides.")
+                continue
+            num_rolls = int(input("Enter the number of rolls: "))
+            if num_rolls <= 0:
+                print("Please enter a positive number of rolls.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    roll_dice(num_rolls, num_sides)
+
+if __name__ == "__main__":
+    main()
+
+
